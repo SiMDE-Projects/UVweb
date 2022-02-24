@@ -1,5 +1,7 @@
 <template>
-  <img alt="UVweb logo" src="../assets/img/logo.png" />
+  <header>
+    <img alt="UVweb logo" src="../assets/img/logo.png" />
+  </header>
 </template>
 
 <script>
