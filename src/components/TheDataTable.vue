@@ -91,17 +91,13 @@ table {
     background-color: #f5f7fa;
   }
 
-  tr {
+  tbody tr {
     cursor: pointer;
     border-bottom: solid 1px #e5e7eb;
 
     &:hover {
       background-color: #f6f7f8;
       color: #5b6064;
-    }
-
-    td {
-      padding: 0.5em 1em;
     }
   }
 }
