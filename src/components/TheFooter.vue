@@ -1,6 +1,9 @@
 <template>
   <footer>
-    <div>Made with ❤ by SiMDE.</div>
+    <div>
+      <font-awesome-icon icon="code" /> with
+      <font-awesome-icon icon="heart" /> by SiMDE.
+    </div>
     <div class="links">
       <a href="mailto:simde@assos.utc.fr">Contact</a>
       <router-link to="/about">About</router-link>

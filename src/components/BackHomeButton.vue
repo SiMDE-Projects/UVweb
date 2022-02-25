@@ -1,5 +1,8 @@
 <template>
-  <router-link to="/about">← Back</router-link>
+  <router-link to="/about">
+    <font-awesome-icon icon="arrow-left" />
+    <span>Back</span>
+  </router-link>
 </template>
 
 <script>
