@@ -1,12 +1,14 @@
 {
-    "uvs": [
-        {
-            "name": "HE01",
-            "title": "foo"
-        },
-        {
-            "name": "IC03",
-            "title": "bar"
-        }
-    ]
+  "uvs": [
+    {
+      "id": 1,
+      "name": "HE01",
+      "title": "foo"
+    },
+    {
+      "id": 2,
+      "name": "IC03",
+      "title": "bar"
+    }
+  ]
 }

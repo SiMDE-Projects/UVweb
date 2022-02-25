@@ -25,10 +25,12 @@
   <div v-else class="notFound">
     Aucune UV ne correspond à votre recherche...
   </div>
+  <button @click="addUv">Ajouter</button>
 </template>
 
 <script>
 import axios from "axios";
+const baseURL = "http://localhost:3000/uvs";
 
 export default {
   name: "TheDataTable",
@@ -40,17 +42,20 @@ export default {
       uvs: () => [],
     };
   },
-  async created() {
-    try {
-      const res = await axios.get("http://localhost:3000/uvs");
-      this.uvs = res.data;
-    } catch (e) {
-      console.error(e);
-    }
+  created() {
+    this.populateUvs();
   },
   methods: {
     goToUvView(name) {
       this.$router.push({ name: "uv", params: { name: name } });
+    },
+    async populateUvs() {
+      try {
+        const res = await axios.get(baseURL);
+        this.uvs = res.data;
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 };
