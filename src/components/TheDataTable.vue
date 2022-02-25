@@ -4,7 +4,7 @@
     v-model="search"
     placeholder="Rechercher une UV..."
   />
-  <table class="readingHelp">
+  <table v-if="uvs.length > 0" class="readingHelp">
     <thead>
       <tr>
         <th>Nom</th>
@@ -22,9 +22,14 @@
       </tr>
     </tbody>
   </table>
+  <div v-else class="notFound">
+    Aucune UV ne correspond à votre recherche...
+  </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "TheDataTable",
   components: {},
@@ -32,11 +37,16 @@ export default {
     return {
       search: "",
       filters: () => ({}),
-      uvs: [
-        { name: "HE01", title: "foo" },
-        { name: "IC03", title: "bar" },
-      ],
+      uvs: () => [],
     };
+  },
+  async created() {
+    try {
+      const res = await axios.get("http://localhost:3000/uvs");
+      this.uvs = res.data;
+    } catch (e) {
+      console.error(e);
+    }
   },
   methods: {
     goToUvView(name) {
@@ -94,6 +104,10 @@ table {
       padding: 0.5em 1em;
     }
   }
+}
+
+.notFound {
+  margin-bottom: 2em;
 }
 
 .monospace {
