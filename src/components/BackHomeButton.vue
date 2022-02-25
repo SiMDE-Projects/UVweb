@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/about">
+  <router-link to="/">
     <font-awesome-icon icon="arrow-left" />
     <span>Back</span>
   </router-link>
