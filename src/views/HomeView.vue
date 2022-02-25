@@ -1,11 +1,16 @@
 <template>
   <div class="home">
-    <h1>This is an home page</h1>
+    <TheDataTable />
   </div>
 </template>
 
 <script>
+import TheDataTable from "@/components/TheDataTable.vue";
+
 export default {
   name: "HomeView",
+  components: {
+    TheDataTable,
+  },
 };
 </script>
