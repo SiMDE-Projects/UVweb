@@ -14,5 +14,11 @@ export default {
 <style scoped lang="scss">
 a {
   float: left;
+  color: rgb(87, 96, 106);
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(132, 142, 153);
+  }
 }
 </style>
