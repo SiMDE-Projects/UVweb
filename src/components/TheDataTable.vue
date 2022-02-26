@@ -7,18 +7,20 @@
   <table v-if="uvs.length > 0" class="readingHelp">
     <thead>
       <tr>
-        <th>Nom</th>
-        <th>Intitulé</th>
+        <th v-for="column in columns" :key="column.name">
+          {{ column.label }}
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr
         v-for="uv in uvs"
-        :key="uv.name"
+        :key="uv.id"
         @click="goToUvView(uv.name.toLowerCase())"
       >
-        <td class="monospace">{{ uv.name }}</td>
-        <td>{{ uv.title }}</td>
+        <td v-for="column in columns" :key="column.name">
+          {{ uv[column.name] }}
+        </td>
       </tr>
     </tbody>
   </table>
@@ -38,8 +40,12 @@ export default {
   data() {
     return {
       search: "",
-      filters: () => ({}),
-      uvs: () => [],
+      filters: {},
+      uvs: [],
+      columns: [
+        { name: "name", label: "nom" },
+        { name: "title", label: "intitulé" },
+      ],
     };
   },
   created() {
