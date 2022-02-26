@@ -12,12 +12,14 @@
           :key="column.name"
           @click="sortBy(column)"
         >
-          <span>{{ column.label }}</span>
-          <font-awesome-icon
-            v-if="sort.key == column.name"
-            :icon="sortIcon"
-            class="sortIcon"
-          />
+          <div class="wrapper">
+            <span>{{ column.label }}</span>
+            <font-awesome-icon
+              v-show="sort.key == column.name"
+              :icon="sortIcon"
+              class="sortIcon"
+            />
+          </div>
         </th>
       </tr>
     </thead>
@@ -27,7 +29,11 @@
         :key="uv.id"
         @click="goToUvView(uv.name.toLowerCase())"
       >
-        <td v-for="column in columns" :key="column.name">
+        <td
+          v-for="column in columns"
+          :key="column.name"
+          :class="{ fixedWidth: column.fixedWidth }"
+        >
           {{ formatCell(uv, column) }}
         </td>
       </tr>
@@ -52,12 +58,13 @@ export default {
       sort: { key: null, dir: null },
       uvs: [],
       columns: [
-        { name: "name", label: "nom" },
+        { name: "name", label: "nom", fixedWidth: true },
         { name: "title", label: "intitulé", orderable: false },
         {
           name: "note",
           label: "note",
           defaultOrderDir: "desc",
+          fixedWidth: true,
         },
       ],
     };
@@ -65,8 +72,8 @@ export default {
   created() {
     this.populateUvs();
     this.sort = {
-      key: this.columns[0].name,
-      dir: this.columns[0].defaultOrderDir || "asc",
+      key: "name",
+      dir: "asc",
     };
   },
   computed: {
@@ -98,7 +105,9 @@ export default {
     formatCell(uv, column) {
       let content = uv[column.name];
       if (column.name == "note") {
-        return content.toFixed(2);
+        let formatted = content.toFixed(2);
+        if (formatted.length == 4) formatted = "\xa0" + formatted;
+        return formatted;
       }
       return content;
     },
@@ -163,10 +172,13 @@ table {
     border-top: solid 1px #e5e7eb;
     border-bottom: solid 2px #d4d7dd;
     background-color: #f5f7fa;
-    position: relative;
 
     &:hover {
       background-color: #e2e6ec;
+    }
+
+    .wrapper {
+      display: flex;
     }
   }
 
@@ -184,12 +196,13 @@ table {
   margin-bottom: 2em;
 }
 
-.monospace {
+.fixedWidth {
   font-family: Roboto Mono;
+  text-align: center;
+  width: 1px;
 }
 
 .sortIcon {
-  position: absolute;
-  right: 0.6em;
+  margin-left: 0.5em;
 }
 </style>
