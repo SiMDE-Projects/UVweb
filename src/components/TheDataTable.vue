@@ -13,7 +13,11 @@
           @click="sortBy(column.name)"
         >
           <span>{{ column.label }}</span>
-          <font-awesome-icon v-if="sort.key == column.name" :icon="sortIcon" />
+          <font-awesome-icon
+            v-if="sort.key == column.name"
+            :icon="sortIcon"
+            class="sortIcon"
+          />
         </th>
       </tr>
     </thead>
@@ -126,6 +130,7 @@ input {
 }
 
 table {
+  cursor: pointer;
   text-align: initial;
   width: 100%;
   border-collapse: collapse;
@@ -152,10 +157,14 @@ table {
     border-top: solid 1px #e5e7eb;
     border-bottom: solid 2px #d4d7dd;
     background-color: #f5f7fa;
+    position: relative;
+
+    &:hover {
+      background-color: #e2e6ec;
+    }
   }
 
   tbody tr {
-    cursor: pointer;
     border-bottom: solid 1px #e5e7eb;
 
     &:hover {
@@ -171,5 +180,10 @@ table {
 
 .monospace {
   font-family: Roboto Mono;
+}
+
+.sortIcon {
+  position: absolute;
+  right: 0.6em;
 }
 </style>
