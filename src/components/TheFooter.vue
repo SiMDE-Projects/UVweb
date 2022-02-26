@@ -19,7 +19,9 @@ export default {
 
 <style scoped lang="scss">
 footer {
+  padding-top: 20px;
   color: rgb(87, 96, 106);
+  height: 100px;
 }
 
 .links {

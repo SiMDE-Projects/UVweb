@@ -1,7 +1,9 @@
 <template>
-  <TheHeader />
-  <TheBackHomeButton v-show="this.$route.name != 'home'" />
-  <router-view />
+  <div class="wrapper">
+    <TheHeader />
+    <TheBackHomeButton v-show="this.$route.name != 'home'" />
+    <router-view />
+  </div>
   <TheFooter />
 </template>
 
@@ -21,6 +23,15 @@ export default {
 </script>
 
 <style lang="scss">
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: calc(100% - 100px);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
