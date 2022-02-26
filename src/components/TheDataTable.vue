@@ -7,14 +7,19 @@
   <table v-if="uvs.length > 0" class="readingHelp">
     <thead>
       <tr>
-        <th v-for="column in columns" :key="column.name">
-          {{ column.label }}
+        <th
+          v-for="column in columns"
+          :key="column.name"
+          @click="sortBy(column.name)"
+        >
+          <span>{{ column.label }}</span>
+          <font-awesome-icon v-if="sort.key == column.name" :icon="sortIcon" />
         </th>
       </tr>
     </thead>
     <tbody>
       <tr
-        v-for="uv in uvs"
+        v-for="uv in sortedUvs"
         :key="uv.id"
         @click="goToUvView(uv.name.toLowerCase())"
       >
@@ -41,17 +46,53 @@ export default {
     return {
       search: "",
       filters: {},
+      sort: { key: null, dir: null },
       uvs: [],
       columns: [
-        { name: "name", label: "nom" },
-        { name: "title", label: "intitulé" },
+        { name: "name", label: "nom", defaultOrderDir: "asc" },
+        { name: "title", label: "intitulé", defaultOrderDir: "asc" },
+        { name: "note", label: "note", defaultOrderDir: "desc" },
       ],
     };
   },
   created() {
     this.populateUvs();
+    this.sort = {
+      key: this.columns[0].name,
+      dir: this.columns[0].defaultOrderDir,
+    };
+  },
+  computed: {
+    sortedUvs() {
+      let sortedUvs = this.uvs;
+      sortedUvs = sortedUvs.sort((a, b) => {
+        if (a[this.sort.key] > b[this.sort.key]) return 1;
+        if (a[this.sort.key] < b[this.sort.key]) return -1;
+        return 0;
+      });
+      if (this.sort.dir == "desc") sortedUvs.reverse();
+      return sortedUvs;
+    },
+    sortIcon() {
+      return "sort-" + (this.sort.dir == "asc" ? "down" : "up");
+    },
   },
   methods: {
+    getColumnByKey(key) {
+      for (const column of this.columns) {
+        if (column.name == key) return column;
+      }
+      return null;
+    },
+    sortBy(key) {
+      if (this.sort.key == key) {
+        if (this.sort.dir == "asc") this.sort.dir = "desc";
+        else this.sort.dir = "asc";
+      } else {
+        this.sort.key = key;
+        this.sort.dir = this.getColumnByKey(key).defaultOrderDir;
+      }
+    },
     goToUvView(name) {
       this.$router.push({ name: "uv", params: { name: name } });
     },

@@ -3,37 +3,44 @@
     {
       "id": 1,
       "name": "HE01",
-      "title": "foo"
+      "title": "foo",
+      "note": 5.4
     },
     {
       "id": 2,
       "name": "IC03",
-      "title": "bar"
+      "title": "bar",
+      "note": 9
     },
     {
       "id": 3,
       "name": "SY02",
-      "title": "bar"
+      "title": "bar",
+      "note": 8.3
     },
     {
       "id": 4,
       "name": "SY32",
-      "title": "bar"
+      "title": "bar",
+      "note": 8.9
     },
     {
       "id": 5,
       "name": "MT90",
-      "title": "bar"
+      "title": "bar",
+      "note": 3
     },
     {
       "id": 6,
       "name": "SI28",
-      "title": "bar"
+      "title": "bar",
+      "note": 9
     },
     {
       "id": 7,
       "name": "NF11",
-      "title": "bar"
+      "title": "bar",
+      "note": 10
     }
   ]
 }
