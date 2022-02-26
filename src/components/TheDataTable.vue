@@ -32,7 +32,6 @@
   <div v-else class="notFound">
     Aucune UV ne correspond à votre recherche...
   </div>
-  <button @click="addUv">Ajouter</button>
 </template>
 
 <script>
