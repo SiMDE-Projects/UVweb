@@ -4,7 +4,7 @@
     v-model="search"
     placeholder="Rechercher une UV..."
   />
-  <table v-if="uvs.length > 0" class="readingHelp">
+  <table v-if="filteredUvs.length > 0" class="readingHelp">
     <thead>
       <tr>
         <th
@@ -52,13 +52,12 @@ export default {
       sort: { key: null, dir: null },
       uvs: [],
       columns: [
-        { name: "name", label: "nom", defaultOrderDir: "asc" },
-        { name: "title", label: "intitulé", defaultOrderDir: "asc" },
+        { name: "name", label: "nom" },
+        { name: "title", label: "intitulé", orderable: false },
         {
           name: "note",
           label: "note",
           defaultOrderDir: "desc",
-          formatFunction: this.formatNote,
         },
       ],
     };
@@ -67,12 +66,22 @@ export default {
     this.populateUvs();
     this.sort = {
       key: this.columns[0].name,
-      dir: this.columns[0].defaultOrderDir,
+      dir: this.columns[0].defaultOrderDir || "asc",
     };
   },
   computed: {
+    filteredUvs() {
+      let filteredUvs = this.uvs;
+      if (this.search != "") {
+        let sv = this.search.toUpperCase();
+        filteredUvs = filteredUvs.filter((item) => {
+          if (item.name.startsWith(sv)) return true;
+        });
+      }
+      return filteredUvs;
+    },
     sortedUvs() {
-      let sortedUvs = this.uvs;
+      let sortedUvs = this.filteredUvs;
       sortedUvs = sortedUvs.sort((a, b) => {
         if (a[this.sort.key] > b[this.sort.key]) return 1;
         if (a[this.sort.key] < b[this.sort.key]) return -1;
@@ -100,12 +109,14 @@ export default {
       return null;
     },
     sortBy(key) {
+      const column = this.getColumnByKey(key);
+      if (column.orderable == false) return;
       if (this.sort.key == key) {
         if (this.sort.dir == "asc") this.sort.dir = "desc";
         else this.sort.dir = "asc";
       } else {
         this.sort.key = key;
-        this.sort.dir = this.getColumnByKey(key).defaultOrderDir;
+        this.sort.dir = column.defaultOrderDir || "asc";
       }
     },
     goToUvView(name) {
