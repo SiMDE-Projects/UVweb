@@ -24,7 +24,7 @@
         @click="goToUvView(uv.name.toLowerCase())"
       >
         <td v-for="column in columns" :key="column.name">
-          {{ uv[column.name] }}
+          {{ formatCell(uv, column) }}
         </td>
       </tr>
     </tbody>
@@ -50,7 +50,12 @@ export default {
       columns: [
         { name: "name", label: "nom", defaultOrderDir: "asc" },
         { name: "title", label: "intitulé", defaultOrderDir: "asc" },
-        { name: "note", label: "note", defaultOrderDir: "desc" },
+        {
+          name: "note",
+          label: "note",
+          defaultOrderDir: "desc",
+          formatFunction: this.formatNote,
+        },
       ],
     };
   },
@@ -77,6 +82,13 @@ export default {
     },
   },
   methods: {
+    formatCell(uv, column) {
+      let content = uv[column.name];
+      if (column.name == "note") {
+        return content.toFixed(2);
+      }
+      return content;
+    },
     getColumnByKey(key) {
       for (const column of this.columns) {
         if (column.name == key) return column;
