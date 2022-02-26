@@ -10,7 +10,7 @@
         <th
           v-for="column in columns"
           :key="column.name"
-          @click="sortBy(column.name)"
+          @click="sortBy(column)"
         >
           <span>{{ column.label }}</span>
           <font-awesome-icon
@@ -102,22 +102,17 @@ export default {
       }
       return content;
     },
-    getColumnByKey(key) {
-      for (const column of this.columns) {
-        if (column.name == key) return column;
-      }
-      return null;
-    },
-    sortBy(key) {
-      const column = this.getColumnByKey(key);
+    sortBy(column) {
       if (column.orderable == false) return;
-      if (this.sort.key == key) {
-        if (this.sort.dir == "asc") this.sort.dir = "desc";
-        else this.sort.dir = "asc";
-      } else {
-        this.sort.key = key;
-        this.sort.dir = column.defaultOrderDir || "asc";
-      }
+      this.sort.key == column.name
+        ? this.toogleSortDir()
+        : (this.sort = {
+            key: column.name,
+            dir: column.defaultOrderDir || "asc",
+          });
+    },
+    toogleSortDir() {
+      this.sort.dir = this.sort.dir == "asc" ? "desc" : "asc";
     },
     goToUvView(name) {
       this.$router.push({ name: "uv", params: { name: name } });
