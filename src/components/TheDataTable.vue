@@ -50,7 +50,6 @@ const baseURL = "http://localhost:3000/uvs";
 
 export default {
   name: "TheDataTable",
-  components: {},
   data() {
     return {
       search: "",

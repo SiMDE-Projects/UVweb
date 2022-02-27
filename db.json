@@ -4,7 +4,31 @@
       "id": 1,
       "name": "HE01",
       "title": "foo",
-      "note": 5.4
+      "note": 5.4,
+      "feedbacks": {
+        "utility": [
+          {
+            "value": "Nul",
+            "count": 2
+          },
+          {
+            "value": "Peu intéressant",
+            "count": 9
+          },
+          {
+            "value": "Intéressant",
+            "count": 9
+          },
+          {
+            "value": "Trés intéressant",
+            "count": 3
+          },
+          {
+            "value": "Passionnant",
+            "count": 1
+          }
+        ]
+      }
     },
     {
       "id": 2,
