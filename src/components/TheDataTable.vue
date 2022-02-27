@@ -4,7 +4,15 @@
     v-model="search"
     placeholder="Rechercher une UV..."
   />
-  <table v-if="filteredUvs.length > 0" class="readingHelp">
+  <div class="tableOptionsBar">
+    <font-awesome-icon
+      class="button"
+      @click="readingAid = !readingAid"
+      :class="{ active: readingAid }"
+      icon="glasses"
+    />
+  </div>
+  <table v-if="filteredUvs.length > 0" :class="{ readingAid }">
     <thead>
       <tr>
         <th
@@ -66,6 +74,7 @@ export default {
           fixedWidth: true,
         },
       ],
+      readingAid: false,
     };
   },
   created() {
@@ -143,6 +152,25 @@ input {
   margin-bottom: 2em;
 }
 
+.tableOptionsBar {
+  text-align: right;
+
+  .button {
+    cursor: pointer;
+    color: #8a9bac;
+    font-size: 1.1em;
+    margin: 0.4em;
+
+    &:hover {
+      color: #566b80;
+    }
+
+    &.active {
+      color: #2c3e50;
+    }
+  }
+}
+
 table {
   cursor: pointer;
   text-align: initial;
@@ -150,7 +178,7 @@ table {
   border-collapse: collapse;
   margin-bottom: 4em;
 
-  &.readingHelp tbody tr:nth-child(even) {
+  &.readingAid tbody tr:nth-child(even) {
     background-color: #f5f7fa;
 
     &:hover {
@@ -183,10 +211,11 @@ table {
 
   tbody tr {
     border-bottom: solid 1px #e5e7eb;
+    transition: background-color 0.3s;
 
     &:hover {
       background-color: #f6f7f8;
-      color: #5b6064;
+      color: #0b0c0c;
     }
   }
 }

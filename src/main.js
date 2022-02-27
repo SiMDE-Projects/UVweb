@@ -8,6 +8,7 @@ import {
   faArrowLeft,
   faSortUp,
   faSortDown,
+  faGlasses,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -16,6 +17,7 @@ library.add(faCode);
 library.add(faArrowLeft);
 library.add(faSortUp);
 library.add(faSortDown);
+library.add(faGlasses);
 
 createApp(App)
   .use(router)
