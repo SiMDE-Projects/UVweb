@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div>
+    <div class="copyright">
       <font-awesome-icon icon="code" /> with
       <font-awesome-icon icon="heart" /> by SiMDE.
     </div>
@@ -19,9 +19,35 @@ export default {
 
 <style scoped lang="scss">
 footer {
-  padding-top: 20px;
+  text-align: center;
+  position: relative;
   color: rgb(87, 96, 106);
-  height: 100px;
+  height: 85px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -22px;
+    width: 1500;
+    height: 22px;
+    left: -300px;
+    right: -300px;
+    background: radial-gradient(
+      ellipse at 50% 120%,
+      rgba(0, 0, 0, 0.2),
+      rgba(97, 97, 97, 0) 30%
+    );
+    background: webkit-radial-gradient(
+      ellipse at 50% 120%,
+      rgba(0, 0, 0, 0.2),
+      rgba(97, 97, 97, 0) 30%
+    );
+  }
+}
+
+.copyright {
+  padding-top: 1em;
 }
 
 .links {

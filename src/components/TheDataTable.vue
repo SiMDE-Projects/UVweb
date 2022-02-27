@@ -148,7 +148,7 @@ table {
   text-align: initial;
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 
   &.readingHelp tbody tr:nth-child(even) {
     background-color: #f5f7fa;

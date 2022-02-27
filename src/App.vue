@@ -2,7 +2,7 @@
   <div class="wrapper">
     <TheHeader />
     <TheBackHomeButton v-show="this.$route.name != 'home'" />
-    <router-view />
+    <router-view id="main" />
   </div>
   <TheFooter />
 </template>
@@ -29,15 +29,20 @@ body {
 }
 
 .wrapper {
-  min-height: calc(100% - 100px);
+  min-height: calc(100% - 85px);
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+#main {
+  text-align: center;
   max-width: 900px;
   margin: auto;
 }
