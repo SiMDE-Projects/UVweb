@@ -23,6 +23,11 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+  --text-color: #2c3e50;
+  --disabled-color: #8a9bac;
+}
+
 html,
 body {
   height: 100%;
@@ -36,7 +41,7 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: var(--text-color);
   min-height: 100%;
   overflow: hidden;
 }
@@ -52,7 +57,7 @@ nav {
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--text-color);
 
     &.router-link-exact-active {
       color: #42b983;

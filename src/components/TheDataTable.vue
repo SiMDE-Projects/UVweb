@@ -157,7 +157,7 @@ input {
 
   .button {
     cursor: pointer;
-    color: #8a9bac;
+    color: var(--disabled-color);
     font-size: 1.1em;
     margin: 0.4em;
 
@@ -166,7 +166,7 @@ input {
     }
 
     &.active {
-      color: #2c3e50;
+      color: var(--text-color);
     }
   }
 }
