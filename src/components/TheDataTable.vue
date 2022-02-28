@@ -4,7 +4,7 @@
     v-model="search"
     placeholder="Rechercher une UV..."
   />
-  <div class="tableOptionsBar">
+  <div v-if="filteredUvs.length > 0" class="tableOptionsBar">
     <font-awesome-icon
       class="button"
       @click="readingAid = !readingAid"
