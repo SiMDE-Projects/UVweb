@@ -22,7 +22,6 @@ footer {
   text-align: center;
   position: relative;
   color: rgb(87, 96, 106);
-  height: 85px;
 
   &:before {
     content: "";

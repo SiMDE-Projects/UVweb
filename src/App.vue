@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
     <TheHeader />
-    <TheBackHomeButton v-show="this.$route.name != 'home'" />
-    <router-view id="main" />
+    <main class="main">
+      <TheBackHomeButton v-show="this.$route.name != 'home'" />
+      <router-view class="router-view" />
+    </main>
   </div>
   <TheFooter />
 </template>
@@ -34,7 +36,7 @@ body {
 }
 
 .wrapper {
-  min-height: calc(100% - 85px);
+  min-height: calc(100% - 80px);
 }
 
 #app {
@@ -42,14 +44,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-color);
-  min-height: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
-#main {
-  text-align: center;
+.main {
   max-width: 900px;
   margin: auto;
+}
+
+.router-view {
+  text-align: center;
 }
 
 nav {

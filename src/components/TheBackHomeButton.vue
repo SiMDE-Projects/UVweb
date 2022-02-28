@@ -1,7 +1,7 @@
 <template>
   <router-link to="/">
     <font-awesome-icon icon="arrow-left" />
-    <span>Back</span>
+    <span class="button-label">Back</span>
   </router-link>
 </template>
 
@@ -20,5 +20,9 @@ a {
   &:hover {
     color: rgb(132, 142, 153);
   }
+}
+
+.button-label {
+  margin-left: 0.3em;
 }
 </style>
