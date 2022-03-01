@@ -21,6 +21,13 @@ const routes = [
       return import(/* webpackChunkName: "uv" */ "../views/UvView.vue");
     },
   },
+  {
+    path: "/post",
+    name: "post",
+    component: function () {
+      return import(/* webpackChunkName: "post" */ "../views/PostView.vue");
+    },
+  },
 ];
 
 const router = createRouter({
