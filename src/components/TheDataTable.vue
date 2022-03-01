@@ -135,12 +135,15 @@ export default {
       this.$router.push({ name: "uv", params: { name: name } });
     },
     async populateUvs() {
-      try {
-        const res = await axios.get(baseURL);
-        this.uvs = res.data;
-      } catch (e) {
-        console.error(e);
-      }
+      axios
+        .get(baseURL)
+        .then((res) => {
+          console.log(res);
+          this.uvs = res.data;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     },
   },
 };
