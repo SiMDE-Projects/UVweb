@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import StackedBarChart from "@/components/StackedBarChart.vue";
+// import StackedBarChart from "@/components/StackedBarChart.vue";
 
 export default {
   name: "UvView",
   components: {
-    StackedBarChart,
+    // StackedBarChart,
   },
   data() {
     return {
