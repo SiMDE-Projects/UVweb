@@ -34,8 +34,16 @@ export default {
     computedWidth(count) {
       return (count / this.totalCount) * 100 + "%";
     },
-    computedColor(order) {
-      return ["#ff0000", "#ffa700", "#fff400", "#a3ff00", "#2cba00"][order];
+    computedColor(rank) {
+      colorScale = [
+        "#ff0d0d",
+        "#ff4e11",
+        "#ff8e15",
+        "#fab733",
+        "#acb334",
+        "69b34c",
+      ];
+      return colorScale[rank];
     },
   },
   computed: {
