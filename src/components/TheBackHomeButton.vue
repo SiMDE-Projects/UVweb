@@ -1,8 +1,10 @@
 <template>
-  <router-link to="/">
-    <font-awesome-icon icon="arrow-left" />
-    <span class="button-label">Back</span>
-  </router-link>
+  <div class="container">
+    <router-link to="/">
+      <font-awesome-icon icon="arrow-left" />
+      <span class="button-label">Back</span>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -12,8 +14,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.container {
+  text-align: left;
+}
+
 a {
-  float: left;
   color: rgb(87, 96, 106);
   text-decoration: none;
 
