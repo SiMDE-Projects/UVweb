@@ -1,6 +1,7 @@
 <template>
   <div class="uv">
     <h1>This is the {{ $route.params.name.toUpperCase() }} UV page</h1>
+    <button @click="review">Laisser un avis</button>
     <!-- <div class="interest">
       <span>Intéret</span>
       <StackedBarChart :datas="barDatas" />
@@ -26,6 +27,14 @@ export default {
       //   { order: 4, value: "Passionnant", count: 1 },
       // ],
     };
+  },
+  methods: {
+    review() {
+      this.$router.push({
+        name: "post",
+        params: { name: this.$route.params.name },
+      });
+    },
   },
 };
 </script>
