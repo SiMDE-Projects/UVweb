@@ -1,8 +1,9 @@
 <template>
-  <input
+  <AppInput
     name="table-search"
     v-model="search"
     placeholder="Rechercher une UV..."
+    @input="debug"
   />
   <div v-if="filteredUvs.length > 0" class="tableOptionsBar">
     <font-awesome-icon
@@ -53,11 +54,16 @@
 </template>
 
 <script>
+import AppInput from "@/components/AppInput.vue";
+
 import axios from "axios";
 const baseURL = "http://localhost:3000/uvs";
 
 export default {
   name: "TheDataTable",
+  components: {
+    AppInput,
+  },
   data() {
     return {
       search: "",
@@ -110,6 +116,9 @@ export default {
     },
   },
   methods: {
+    debug() {
+      console.log(this.search);
+    },
     formatCell(uv, column) {
       let content = uv[column.name];
       if (column.name == "note") {
