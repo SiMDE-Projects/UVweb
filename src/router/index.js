@@ -27,6 +27,12 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "post" */ "../views/PostView.vue");
     },
+    props: {
+      name: {
+        type: String,
+        required: false,
+      },
+    },
   },
 ];
 
