@@ -1,24 +1,27 @@
 # uv-web
+Outil en ligne pour consulter et donner son avis sur les UVs de l'UTC.
 
-## Project setup
+## Installation du projet
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiler avec hot-reloads pour le developement
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Simuler l'API pour le développement
+```
+npx json-server db.json
+```
+
+### Compiler et minifier pour la production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Linter et fixer les fichiers
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
