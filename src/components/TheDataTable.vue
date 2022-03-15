@@ -27,11 +27,11 @@
           @click="sortBy(column)"
         >
           <div class="wrapper">
-            <span>{{ column.label }}</span>
+            <div>{{ column.label }}</div>
             <font-awesome-icon
-              v-show="sort.key == column.name"
               :icon="sortIcon"
               class="sortIcon"
+              :class="{ hidden: sort.key != column.name }"
             />
           </div>
         </th>
@@ -249,5 +249,9 @@ table {
 
 .sortIcon {
   margin-left: 0.5em;
+}
+
+.hidden {
+  visibility: hidden;
 }
 </style>
