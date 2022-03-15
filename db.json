@@ -3,8 +3,8 @@
     {
       "id": 1,
       "name": "HE01",
-      "title": "foo",
-      "note": 5.4,
+      "title": "Épistémologie et histoire des sciences",
+      "note": 7.46,
       "feedbacks": {
         "utility": [
           {
@@ -33,38 +33,38 @@
     {
       "id": 2,
       "name": "IC03",
-      "title": "bar",
-      "note": 9
+      "title": "Le numérique : des formats aux chaines de production",
+      "note": 7.23
     },
     {
       "id": 3,
       "name": "SY02",
-      "title": "bar",
-      "note": 8.3
+      "title": "Méthodes statistiques pour l'ingénieur",
+      "note": 6.2
     },
     {
       "id": 4,
       "name": "SY32",
-      "title": "bar",
+      "title": "Vision et apprentissage",
       "note": 8.9
     },
     {
       "id": 5,
       "name": "MT90",
-      "title": "bar",
-      "note": 3
+      "title": "Fonctions d'une variable reelle 1",
+      "note": 6
     },
     {
       "id": 6,
       "name": "SI28",
-      "title": "bar",
-      "note": 9
+      "title": "Écriture interactive et multimédia",
+      "note": 9.69
     },
     {
       "id": 7,
       "name": "NF11",
-      "title": "bar",
-      "note": 10
+      "title": "Théorie des langages de programmation",
+      "note": 6.92
     }
   ],
   "comments": [
