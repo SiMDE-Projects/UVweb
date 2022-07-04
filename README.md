@@ -13,7 +13,7 @@ npm run serve
 
 ### Simuler l'API pour le développement
 ```
-npx json-server db.json
+npm run db:serve
 ```
 
 ### Compiler et minifier pour la production
