@@ -69,12 +69,28 @@
   ],
   "comments": [
     {
-      "comment": "jbkjbkj",
+      "comment": "Super cette UV !",
       "id": 1
     },
     {
-      "comment": "lmlkmlk",
+      "comment": "Je recommande !",
       "id": 2
+    },
+    {
+      "comment": "Allez-y tête baissée !",
+      "id": 3
+    },
+    {
+      "comment": "Nulle à chier, fuyez...",
+      "id": 4
+    },
+    {
+      "comment": "Mouais...",
+      "id": 5
+    },
+    {
+      "comment": "Bof...",
+      "id": 6
     }
   ]
 }
