@@ -1,26 +1,121 @@
 <!DOCTYPE html>
-<html lang="fr" style="height: 100%;">
+<html lang="fr">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@400;600&family=Inter:wght@500&display=swap"
-    rel="stylesheet">
-  <!-- <title>UVweb</title> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVWeb</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></link>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+
+    <script src="../src/components/AppSelect.js"></script>
 </head>
 
-<body style="height: 100%; margin: 0;">
-  <noscript>
-    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-        Please enable it to continue.</strong>
-  </noscript>
-  <div id="app"></div>
-  <!-- built files will be auto injected -->
+<body>
+    <div id="app">
+        <div id="filtering-bar">
+            <app-select name="Trier" v-bind:options="[{name: 'note', label: 'Note'}, {name: 'use', label: 'Utilité'}]" default="Trier" v-bind:unselectOnClick="true" v-model="sortBy"></app-select>
+            <button v-on:click="ascending = !ascending" class="sort-button">
+                <i v-if="ascending" class="fa fa-sort-up"></i>
+                <i v-else class="fa fa-sort-down"></i>
+            </button>
+            <input type="text" id="search-input" v-model="searchValue" placeholder="Rechercher une UV..." />
+            <i class="fa fa-search"></i>
+        </div>
+    
+        <div id="list">
+            <div class="uv" v-for="uv in filteredUVs" :key="uv.name">
+                <h3>{{uv.name}} : {{uv.title}}</h3>
+                <span>{{uv.note}}/10</span>
+            </div>
+            <div v-if="filteredUVs.length == 0">Pas de résultats pour votre recherche...</div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ascending: true,
+                sortBy: '',
+                searchValue: '',
+                UVs: [
+                    {
+                        name: "HE01",
+                        title: "Épistémologie et histoire des sciences",
+                        note: 9.69
+                    },
+                    {
+                        name: "SI28",
+                        title: "Écriture interactive et multimédia",
+                        note: 9.69
+                    },
+                    {
+                        name: "SY02",
+                        title: "Méthodes statistiques pour l'ingénieur",
+                        note: 6.20
+                    },
+                    {
+                        name: "NF11",
+                        title: "Théorie des langages de programmation",
+                        note: 6.92
+                    }
+                ]
+            },
+            computed: {
+                filteredUVs() {
+                    let filteredUVs = this.UVs;
+
+                    // Searching
+                    if (this.searchValue != '' && this.searchValue) {
+                        filteredUVs = filteredUVs.filter((item) => {
+                            return item.name
+                                .toLowerCase()
+                                .startsWith(this.searchValue.toLowerCase())
+                                || item.title
+                                    .toLowerCase()
+                                    .includes(this.searchValue.toLowerCase())
+
+                        })
+                    }
+
+                    // Filtering
+                    // if (this.maxCookingTime)
+                    //     filteredUVs = filteredUVs.filter((item) => {
+                    //         return (item.cookingTime <= this.maxCookingTime)
+                    //     })
+
+                    // Sorting
+                    filteredUVs = filteredUVs.sort((a, b) => {
+                        switch (this.sortBy) {
+                            case 'note':
+                                return a.note - b.note;
+                            default:
+                                let fa = a.name.toLowerCase(), fb = b.name.toLowerCase()
+
+                                if (fa < fb) {
+                                    return -1
+                                }
+                                if (fa > fb) {
+                                    return 1
+                                }
+                                return 0
+                        }
+                    })
+
+                    if (!this.ascending) {
+                        filteredUVs.reverse()
+                    }
+
+                    return filteredUVs;
+                }
+            }
+        })
+    </script>
 </body>
 
 </html>
