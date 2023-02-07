@@ -99,10 +99,11 @@ export default {
     filteredUvs() {
       let filteredUvs = this.uvs;
       if (this.search != "") {
-        let sv = this.search.toUpperCase();
-        filteredUvs = filteredUvs.filter((item) => {
-          if (item.name.startsWith(sv)) return true;
-        });
+        filteredUvs = filteredUvs.filter(
+          (item) =>
+            fuzzySearch(this.search, item.name) ||
+            fuzzySearch(this.search, item.title)
+        );
       }
       return filteredUvs;
     },
@@ -161,6 +162,26 @@ export default {
     },
   },
 };
+
+function fuzzySearch(needle, haystack) {
+  let hlen = haystack.length;
+  let nlen = needle.length;
+  if (nlen > hlen) {
+    return false;
+  }
+  needle = needle.normalize("NFD").toLowerCase();
+  haystack = haystack.normalize("NFD").toLowerCase();
+  outer: for (let i = 0, j = 0; i < nlen; i++) {
+    let nch = needle.charCodeAt(i);
+    while (j < hlen) {
+      if (haystack.charCodeAt(j++) === nch) {
+        continue outer;
+      }
+    }
+    return false;
+  }
+  return true;
+}
 </script>
 
 <style lang="scss" scoped>
