@@ -22,7 +22,7 @@
           >N'oublie pas que les propos injurieux sont proscrits sur UVweb.</em
         >
       </div>
-      <button>Valider</button>
+      <button>Poster mon avis</button>
     </form>
   </div>
 </template>
