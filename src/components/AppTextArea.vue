@@ -3,6 +3,7 @@
     @input="$emit('input', value)"
     class="textarea"
     v-model="value"
+    ref="textarea"
   ></textarea>
 </template>
 
@@ -16,29 +17,13 @@ export default {
   },
   methods: {
     resize() {
-      let el = this.$el;
-      let em = parseFloat(getComputedStyle(el).fontSize);
-      this.$el.style.height = "auto";
-      this.$nextTick(() => {
-        let contentHeight =
-          el.scrollHeight +
-          em -
-          window
-            .getComputedStyle(el)
-            .getPropertyValue("padding-top")
-            .slice(0, -2) -
-          window
-            .getComputedStyle(el)
-            .getPropertyValue("padding-bottom")
-            .slice(0, -2);
-        if (this.minHeight && contentHeight < this.minHeight)
-          contentHeight = this.minHeigh;
-        this.$el.style.height = contentHeight + "px";
-      });
-      return this;
+      this.textarea.style.height = "auto";
+      this.textarea.style.height = this.textarea.scrollHeight + "px";
     },
   },
   mounted() {
+    this.textarea = this.$refs.textarea;
+    this.textarea.addEventListener("input", this.resize);
     this.resize();
   },
 };
@@ -49,5 +34,6 @@ export default {
   font-size: 1em;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   width: 100%;
+  padding-bottom: 1em;
 }
 </style>
