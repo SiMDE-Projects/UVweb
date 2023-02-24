@@ -5,6 +5,7 @@
     placeholder="Rechercher une UV..."
     @input="debug"
   />
+  <TheFiltersPanel />
   <div v-if="filteredUvs.length > 0" class="tableOptionsBar">
     <font-awesome-icon
       class="button"
@@ -55,6 +56,7 @@
 
 <script>
 import AppInput from "@/components/AppInput.vue";
+import TheFiltersPanel from "@/components/TheFiltersPanel.vue";
 
 import axios from "axios";
 const baseURL = "http://localhost:3000/uvs";
@@ -63,6 +65,7 @@ export default {
   name: "TheDataTable",
   components: {
     AppInput,
+    TheFiltersPanel,
   },
   data() {
     return {

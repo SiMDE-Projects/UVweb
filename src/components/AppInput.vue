@@ -52,7 +52,7 @@ export default {
   align-items: center;
   border-radius: 0.4em;
   padding: 0.2em;
-  border: 2px solid #0077b5;
+  border: 2px solid var(--accent-color);
   font-size: 1.4rem;
   margin: auto;
   margin-bottom: 1em;
@@ -61,7 +61,7 @@ export default {
 
 .searchIcon {
   padding: 0.2em;
-  color: #0077b5;
+  color: var(--accent-color);
 }
 
 .resetButton {
@@ -82,8 +82,8 @@ export default {
   border: none;
   outline: none;
   padding: 0;
-  caret-color: #0077b5;
-  color: #0077b5;
+  caret-color: var(--accent-color);
+  color: var(--accent-color);
   margin-left: 0.2em;
   min-width: 10em;
 }
