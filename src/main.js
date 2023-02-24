@@ -11,6 +11,7 @@ import {
   faGlasses,
   faInfoCircle,
   faXmark,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -22,6 +23,7 @@ library.add(faSortDown);
 library.add(faGlasses);
 library.add(faInfoCircle);
 library.add(faXmark);
+library.add(faMagnifyingGlass);
 
 createApp(App)
   .use(router)

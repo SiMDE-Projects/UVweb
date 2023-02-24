@@ -1,14 +1,9 @@
 <template>
-  <!-- <AppInput
+  <AppInput
     name="table-search"
     v-model="search"
     placeholder="Rechercher une UV..."
     @input="debug"
-  /> -->
-  <input
-    name="table-search"
-    v-model="search"
-    placeholder="Rechercher une UV..."
   />
   <div v-if="filteredUvs.length > 0" class="tableOptionsBar">
     <font-awesome-icon
@@ -59,7 +54,7 @@
 </template>
 
 <script>
-// import AppInput from "@/components/AppInput.vue";
+import AppInput from "@/components/AppInput.vue";
 
 import axios from "axios";
 const baseURL = "http://localhost:3000/uvs";
@@ -67,7 +62,7 @@ const baseURL = "http://localhost:3000/uvs";
 export default {
   name: "TheDataTable",
   components: {
-    // AppInput,
+    AppInput,
   },
   data() {
     return {

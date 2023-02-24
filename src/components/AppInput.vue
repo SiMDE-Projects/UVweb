@@ -1,6 +1,18 @@
 <template>
-  <div class="input">
-    <input class="html-input" type="text" v-model="value" />
+  <div class="input" @click="setInputFocus">
+    <font-awesome-icon
+      class="searchIcon"
+      icon="magnifying-glass"
+      @click="setInputFocus"
+    />
+    <input
+      class="html-input"
+      type="text"
+      placeholder="Rechercher une UV..."
+      spellcheck="false"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
     <font-awesome-icon
       class="resetButton"
       @click="resetInput"
@@ -13,20 +25,20 @@
 <script>
 export default {
   name: "AppInput",
-  data() {
-    return {
-      value: "",
-    };
-  },
+  props: ["modelValue"],
+  emits: ["update:modelValue"],
   methods: {
     resetInput() {
-      this.value = "";
-      this.$el.children[0].focus();
+      this.$emit("update:modelValue", "");
+      this.setInputFocus();
+    },
+    setInputFocus() {
+      this.$el.children[1].focus();
     },
   },
   computed: {
     hidden() {
-      return !this.value;
+      return !this.modelValue;
     },
   },
 };
@@ -34,15 +46,28 @@ export default {
 
 <style lang="scss" scoped>
 .input {
-  display: inline-block;
-  border: solid 2px black;
-  border-radius: 0.3em;
-  padding: 1px 2px;
+  width: 15em;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 0.4em;
+  padding: 0.2em;
+  border: 2px solid #0077b5;
+  font-size: 1.4rem;
+  margin: auto;
+  margin-bottom: 1em;
+  cursor: text;
+}
+
+.searchIcon {
+  padding: 0.2em;
+  color: #0077b5;
 }
 
 .resetButton {
   width: 1em;
   height: 1em;
+  cursor: pointer;
 
   &:hover {
     color: grey;
@@ -57,5 +82,9 @@ export default {
   border: none;
   outline: none;
   padding: 0;
+  caret-color: #0077b5;
+  color: #0077b5;
+  margin-left: 0.2em;
+  min-width: 10em;
 }
 </style>
