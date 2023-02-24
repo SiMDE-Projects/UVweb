@@ -38,7 +38,7 @@ export default {
           ],
         },
         {
-          name: "Catégorie",
+          name: "Type",
           exclusive: true,
           filters: [
             { name: "CS", active: false },
