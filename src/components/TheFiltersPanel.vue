@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <div class="container-title">
+      <span>Filtres</span>
+      <font-awesome-icon icon="filter" />
+    </div>
     <div
       class="filter-group"
       v-for="(filterGroup, index) in filterGroups"
@@ -34,16 +38,35 @@ export default {
             { name: "TC", active: false },
             { name: "GI", active: false },
             { name: "GB", active: false },
+            { name: "GP", active: false },
+            { name: "GU", active: false },
             { name: "IM", active: false },
+            { name: "HUTECH", active: false },
           ],
         },
         {
           name: "Type",
           exclusive: true,
           filters: [
-            { name: "CS", active: false },
-            { name: "TM", active: false },
-            { name: "TSH", active: false },
+            { name: "CS", active: true },
+            { name: "TM", active: true },
+            { name: "TSH", active: true },
+          ],
+        },
+        {
+          name: "Semestre",
+          exclusive: true,
+          filters: [
+            { name: "Automne", active: true },
+            { name: "Printemps", active: true },
+          ],
+        },
+        {
+          name: "Formation",
+          exclusive: true,
+          filters: [
+            { name: "Formation continue", active: true },
+            { name: "Apprentissage", active: false },
           ],
         },
       ],
@@ -67,6 +90,16 @@ export default {
 <style scoped lang="scss">
 .container {
   text-align: left;
+  width: 460px;
+  margin: auto;
+  border-radius: 1em;
+  border: solid 1px #ccc;
+  padding: 1em;
+
+  & .container-title {
+    color: #333;
+    margin-bottom: 0.6em;
+  }
 }
 .filters-container {
   display: flex;

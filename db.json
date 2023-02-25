@@ -4,6 +4,7 @@
       "id": 1,
       "name": "HE01",
       "title": "Épistémologie et histoire des sciences",
+      "type": "TSH",
       "note": 7.46,
       "feedbacks": {
         "utility": [
@@ -34,17 +35,20 @@
       "id": 2,
       "name": "IC03",
       "title": "Le numérique : des formats aux chaines de production",
+      "type": "TSH",
       "note": 7.23
     },
     {
       "id": 3,
       "name": "SY02",
       "title": "Méthodes statistiques pour l'ingénieur",
+      "type": "CS",
       "note": 6.2
     },
     {
       "id": 4,
       "name": "SY32",
+      "type": "TM",
       "title": "Vision et apprentissage",
       "note": 8.9
     },
@@ -52,18 +56,21 @@
       "id": 5,
       "name": "MT90",
       "title": "Fonctions d'une variable reelle 1",
+      "type": "TM",
       "note": 6
     },
     {
       "id": 6,
       "name": "SI28",
       "title": "Écriture interactive et multimédia",
+      "type": "TSH",
       "note": 9.69
     },
     {
       "id": 7,
       "name": "NF11",
       "title": "Théorie des langages de programmation",
+      "type": "CS",
       "note": 6.92
     }
   ],
